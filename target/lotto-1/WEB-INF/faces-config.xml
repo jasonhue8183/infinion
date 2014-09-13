@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+
+http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+
+              version="2.0">
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        <action-listener>org.primefaces.application.DialogActionListener</action-listener>
+		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+    </application>
+	<factory>
+    	<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
+	</factory>
+	<navigation-rule>
+		<from-view-id>*</from-view-id> 
+	    <navigation-case> 
+	      <from-outcome>home</from-outcome> 
+	      <to-view-id>index.xhtml</to-view-id> 
+	      <redirect />
+	    </navigation-case> 
+	    <navigation-case> 
+	      <from-outcome>viewGlobalErrorPage</from-outcome> 
+	      <to-view-id>/pages/viewGlobalPage.xhtml</to-view-id> 
+	      <redirect />
+	    </navigation-case> 
+	    <navigation-case> 
+	      <from-outcome>viewProductPage</from-outcome> 
+	      <to-view-id>/pages/viewProductPage.xhtml</to-view-id> 
+	      <redirect />
+	    </navigation-case> 
+	    <navigation-case> 
+	      <from-outcome>viewCustomerPage</from-outcome> 
+	      <to-view-id>/pages/viewCustomerPage.xhtml</to-view-id> 
+	      <redirect />
+	    </navigation-case> 
+	</navigation-rule>
+	
+</faces-config>

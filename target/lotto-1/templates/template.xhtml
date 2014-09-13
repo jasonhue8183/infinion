@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:of="http://omnifaces.org/functions"
+		xmlns:o="http://omnifaces.org/ui"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<f:view contentType="text/html" id="fview">
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<title>SCCB 2</title>
+		
+		<c:set var="_omniFacesVersion" value="#{app.version.split('\\-')[0]}" scope="application" />
+		<c:set var="_apiURL" value="http://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
+		<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
+		<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/java/" scope="application" />
+		
+		<ui:debug />
+		<f:metadata>
+			<ui:insert name="metadata" />
+		</f:metadata>
+		
+		<h:head>
+			<style>
+				.ui-layout-pane {
+				    border: 0;
+				}
+			</style>
+			<p:layout fullPage="true" resizeTitle="resize">
+
+				<p:layoutUnit position="north" size="68" id="north" >
+					<ui:include src="header.xhtml" />
+				</p:layoutUnit>
+				
+				<p:layoutUnit id="center" position="center">
+					<p:messages autoUpdate="true" id="msgs" showDetail="true" showSummary="true" />
+					<h2 id="contentTitle"><ui:insert name="contentTitle"></ui:insert></h2>
+					<ui:insert name="content" />
+				</p:layoutUnit>
+				
+				<p:layoutUnit position="south" resizable="true" id="south">
+					<ui:include src="footer.xhtml" />
+				</p:layoutUnit>
+			</p:layout>
+			
+			
+		</h:head>
+		<h:body >
+		</h:body>
+</f:view>
+</html>		

@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="../templates/template.xhtml">
+
+	<ui:define name="content">
+	    <h:form id="testForm">
+	        <h:outputText value="Product Page!"></h:outputText>
+	        <br />
+	        <p:commandLink value="Back" action="#{productsManagedBean.backToHome}"/>
+	        <br />
+	        <p:commandLink  value="Hit exception" actionListener="#{productsManagedBean.hitException}" update=":testForm"/>
+	        <br />
+	        <p:commandLink ajax="false" value="Hit sql exception" action="#{productsManagedBean.hitSqlException}"/>
+	    </h:form>
+	</ui:define>
+
+</ui:composition>

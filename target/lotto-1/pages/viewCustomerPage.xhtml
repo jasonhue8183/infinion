@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="../templates/template.xhtml">
+
+	<ui:define name="content">
+	    <h:form  id="customerForm">
+	    	<p:dataTable id="customersTable" var="customer" value="#{customerManagedBean.customerPojo.customerList}" selection="#{customerManagedBean.customerPojo.selectedCustomer}" rowKey="#{customer.id}" style="margin-bottom:0">
+		        <f:facet name="header">
+		            Customer List
+		        </f:facet>
+		        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+		        <p:column headerText="Id">
+		        	<p:commandLink actionListener="#{customerManagedBean.initEdit(customer.id)}" update=":customerForm">
+		        		 <h:outputText value="#{customer.id}" />
+		        	</p:commandLink>
+		           
+		        </p:column>
+		        <p:column headerText="Name">
+		            <h:outputText value="#{customer.name}" />
+		        </p:column>
+		        <p:column headerText="surname">
+		            <h:outputText value="#{customer.surname}" />
+		        </p:column>
+		    </p:dataTable>
+		     <p:commandButton value="Delete" actionListener="#{customerManagedBean.deleteCustomer}" update=":customerForm"/>
+		     <p:commandButton value="Add" actionListener="#{customerManagedBean.initAdd}" update=":customerForm"/>
+		     
+		    <h:panelGroup id="addEditPnl" style="margin-top:20px;" rendered="#{customerManagedBean.customerPojo.showAddEdit}">
+		    	<table>
+		    		 <tr style="">
+		                <td><h:outputLabel value="Id : " /></td>
+		                <td><p:inputText  value="#{customerManagedBean.customerPojo.customer.id}"/>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td><h:outputLabel for="name" value="Name : " /></td>
+		                <td><p:inputText id="name" value="#{customerManagedBean.customerPojo.customer.name}">
+		                </p:inputText>
+		                    <p:message id="nameMsg" for="name" display="icon"/>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td><h:outputLabel for="surname" value="Surname : " /></td>
+		                <td><p:inputText id="surname" value="#{customerManagedBean.customerPojo.customer.surname}">
+		                </p:inputText>
+		                    <p:message id="surnameMsg" for="surname" display="icon"/>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td><p:commandButton id="addUser" value="Save"  actionListener="#{customerManagedBean.addCustomer}" update=":customerForm"/></td>
+		                <td><p:commandButton id="updateUser" value="Update"  actionListener="#{customerManagedBean.updateCustomer}" update=":customerForm"/></td>
+		            </tr>
+		        </table>
+		    </h:panelGroup>
+	        
+	        <p:commandLink value="Back" action="#{customerManagedBean.backToHome}"/>
+	    </h:form>
+	 </ui:define>
+ </ui:composition>
